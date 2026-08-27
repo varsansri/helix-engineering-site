@@ -41,8 +41,11 @@
     backdrop-filter:blur(14px) saturate(1.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);
   }
   .glass-liquid{filter:url(#liquid);}
-  .btn{display:inline-block;padding:16px 30px;border-radius:999px;cursor:pointer;border:none;
+  .btn{display:inline-block;padding:13px 24px;border-radius:999px;cursor:pointer;border:none;line-height:1;
     font:inherit;transition:transform .25s ease, box-shadow .25s ease;}
+  .btn.lbl{font-size:10px;letter-spacing:.14em;}
+  .btn-lg{padding:15px 30px;}
+  .btn-lg.lbl{font-size:11px;letter-spacing:.16em;}
   .btn-solid{background:var(--ink);color:var(--deep);box-shadow:0 20px 44px -16px rgba(243,239,251,0.5);}
   .btn-solid:hover{transform:translateY(-2px);box-shadow:0 26px 54px -16px rgba(243,239,251,0.65);color:var(--deep);}
   .btn-ghost{color:var(--ink);}
@@ -238,8 +241,8 @@
   <h1>The part that<br><b>must not leak.</b></h1>
   <p class="sub">Helix Engineering moulds every kind of rubber sealing component in ten compounds — made to your drawing in Coimbatore, and shipped worldwide via DHL &amp; FedEx.</p>
   <div class="cta-row">
-    <button class="btn btn-solid lbl" data-appt>Book an appointment</button>
-    <a href="products.html" class="btn btn-ghost glass lbl">See the catalogue</a>
+    <button class="btn btn-lg btn-solid lbl" data-appt>Book an appointment</button>
+    <a href="products.html" class="btn btn-lg btn-ghost glass lbl">See the catalogue</a>
   </div>
 </section>
 
@@ -328,7 +331,7 @@
 <section class="cta-final glass reveal">
   <h2>Tell us what <b>has to hold.</b></h2>
   <p>Medium, pressure, temperature range and quantity. That is enough for us to specify a compound and book you an appointment.</p>
-  <div style="margin-top:32px;"><button class="btn btn-solid lbl" data-appt>Book an appointment</button></div>
+  <div style="margin-top:32px;"><button class="btn btn-lg btn-solid lbl" data-appt>Book an appointment</button></div>
   <div class="contact-chips">
     <div class="cc glass"><span class="lbl k">Sales</span> <span class="v">sales@helixengineering.co.in</span></div>
     <div class="cc glass"><span class="lbl k">Phone</span> <span class="v">(+91) 90036 71545</span></div>
@@ -367,7 +370,7 @@
         <div class="field"><label>Preferred date</label><input type="date" name="date"></div>
       </div>
       <div class="field"><label>Requirement</label><textarea name="message" placeholder="Medium, pressure, temperature range, quantity, or attach a drawing when we reply."></textarea></div>
-      <button class="btn btn-solid lbl" type="submit" style="width:100%;margin-top:6px;">Send appointment request</button>
+      <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:6px;">Send appointment request</button>
     </form>
   </div>
 </div>

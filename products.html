@@ -15,7 +15,10 @@
   .bg-fallback{position:fixed;inset:0;z-index:-3;background:radial-gradient(60% 55% at 22% 18%,rgba(122,223,245,0.22),transparent 60%),radial-gradient(70% 60% at 82% 30%,rgba(177,79,158,0.28),transparent 62%),radial-gradient(80% 70% at 50% 100%,rgba(91,63,168,0.42),transparent 70%),var(--bg);}
   .grain{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");}
   .glass{background:linear-gradient(160deg,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.05) 46%,rgba(255,255,255,0.02) 100%);border:1px solid rgba(255,255,255,0.16);box-shadow:inset 0 1px 0 rgba(255,255,255,0.34),0 34px 80px -30px rgba(6,2,22,0.85);border-radius:26px;backdrop-filter:blur(14px) saturate(1.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);}
-  .btn{display:inline-block;padding:15px 28px;border-radius:999px;cursor:pointer;border:none;font:inherit;transition:transform .25s,box-shadow .25s;}
+  .btn{display:inline-block;padding:13px 24px;border-radius:999px;cursor:pointer;border:none;font:inherit;line-height:1;transition:transform .25s,box-shadow .25s;}
+  .btn.lbl{font-size:10px;letter-spacing:.14em;}
+  .btn-lg{padding:15px 30px;}
+  .btn-lg.lbl{font-size:11px;letter-spacing:.16em;}
   .btn-solid{background:var(--ink);color:var(--deep);box-shadow:0 20px 44px -16px rgba(243,239,251,0.5);}
   .btn-solid:hover{transform:translateY(-2px);color:var(--deep);}
   .btn-ghost{color:var(--ink);}
@@ -520,7 +523,7 @@
 <section class="cta-final glass">
   <h2>Tell us what <b>has to hold.</b></h2>
   <p>Medium, pressure, temperature range and quantity. That is enough for us to specify a compound and book you an appointment.</p>
-  <div style="margin-top:28px;"><button class="btn btn-solid lbl" data-appt>Book an appointment</button></div>
+  <div style="margin-top:28px;"><button class="btn btn-lg btn-solid lbl" data-appt>Book an appointment</button></div>
 </section>
 <footer class="site-foot">
  <div class="foot-top">
@@ -541,7 +544,7 @@
   <div class="row2"><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@company.com"></div><div class="field"><label>Phone</label><input name="phone" placeholder="Phone / WhatsApp"></div></div>
   <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Preferred date</label><input type="date" name="date"></div></div>
   <div class="field"><label>Requirement</label><textarea name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
-  <button class="btn btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send appointment request</button>
+  <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send appointment request</button>
 </form></div></div>
 
 <script>
