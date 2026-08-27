@@ -1,0 +1,320 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1"><title>Steel machined parts — Helix Engineering</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap">
+
+<style>
+  :root{--bg:#140E2C;--ink:#F3EFFB;--lilac:#C9A5F5;--violet:#A78BE0;--cyan:#7ADFF5;
+    --muted:#BCAEDD;--muted2:#B3A5D4;--dim:#9C8CC8;--faint:#7E6BB4;--deep:#1B1140;--pad:60px;}
+  *{box-sizing:border-box;}html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Plus Jakarta Sans','Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+  a{color:var(--lilac);text-decoration:none;}a:hover{color:#fff;}
+  h1,h2,h3{margin:0;}
+  .lbl{font-size:10.5px;font-weight:600;letter-spacing:0.24em;text-transform:uppercase;}
+  #bg-shader{position:fixed;inset:0;width:100%;height:100%;z-index:-2;display:block;}
+  .bg-fallback{position:fixed;inset:0;z-index:-3;background:radial-gradient(60% 55% at 22% 18%,rgba(122,223,245,0.22),transparent 60%),radial-gradient(70% 60% at 82% 30%,rgba(177,79,158,0.28),transparent 62%),radial-gradient(80% 70% at 50% 100%,rgba(91,63,168,0.42),transparent 70%),var(--bg);}
+  .grain{position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:0.14;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='150' height='150' filter='url(%23n)'/%3E%3C/svg%3E");}
+  .glass{background:linear-gradient(160deg,rgba(255,255,255,0.13) 0%,rgba(255,255,255,0.05) 46%,rgba(255,255,255,0.02) 100%);border:1px solid rgba(255,255,255,0.16);box-shadow:inset 0 1px 0 rgba(255,255,255,0.34),0 34px 80px -30px rgba(6,2,22,0.85);border-radius:26px;backdrop-filter:blur(14px) saturate(1.5);-webkit-backdrop-filter:blur(14px) saturate(1.5);}
+  .btn{display:inline-block;padding:15px 28px;border-radius:999px;cursor:pointer;border:none;font:inherit;transition:transform .25s,box-shadow .25s;}
+  .btn-solid{background:var(--ink);color:var(--deep);box-shadow:0 20px 44px -16px rgba(243,239,251,0.5);}
+  .btn-solid:hover{transform:translateY(-2px);color:var(--deep);}
+  .btn-ghost{color:var(--ink);}
+  header.site{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;padding:18px var(--pad);max-width:1440px;margin:0 auto;}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img.mark{width:58px;height:auto;filter:drop-shadow(0 0 18px rgba(201,165,245,.35));animation:shimmer 6s ease-in-out infinite;}
+  .brand img.word{width:92px;height:auto;}
+  @keyframes shimmer{0%,100%{filter:drop-shadow(0 0 14px rgba(201,165,245,.30)) brightness(1);}50%{filter:drop-shadow(0 0 26px rgba(122,223,245,.55)) brightness(1.15);}}
+  nav.pill{display:flex;align-items:center;gap:2px;padding:6px 7px;border-radius:999px;}
+  nav.pill a{padding:11px 18px;color:var(--ink);}nav.pill a.on{color:var(--lilac);}
+  nav.pill a.cta{background:var(--ink);color:var(--deep);border-radius:999px;padding:12px 22px;}
+  .menu-btn{display:none;padding:10px 18px;border-radius:999px;color:var(--ink);cursor:pointer;}
+  section.blk{padding:34px var(--pad) 0;max-width:1440px;margin:0 auto;}
+  .eyebrow{color:var(--violet);}
+  .crumb{color:var(--lilac);}
+  .hband{position:relative;text-align:center;padding:48px var(--pad) 30px;max-width:1000px;margin:0 auto;}
+  .hband h1{font-size:clamp(38px,7vw,76px);font-weight:300;line-height:1;letter-spacing:-0.045em;margin-top:16px;}
+  .hband h1 b{font-weight:600;}
+  .hband p{margin:20px auto 0;max-width:660px;font-size:16px;font-weight:400;line-height:1.7;color:#EAE3F8;}
+  .filter{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:14px var(--pad) 8px;max-width:1440px;margin:0 auto;}
+  .filter .lbl{margin-right:6px;color:var(--faint);}
+  .fchip{padding:10px 18px;border-radius:999px;cursor:pointer;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;}
+  .fchip.on{background:var(--ink);color:var(--deep);}
+  .famsec{padding:34px var(--pad) 0;max-width:1440px;margin:0 auto;}
+  .famhead{display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap;border-bottom:1px solid rgba(255,255,255,.12);padding-bottom:14px;margin-bottom:22px;}
+  .famhead h2{font-size:clamp(22px,3vw,30px);font-weight:500;letter-spacing:-0.03em;}
+  .famhead .fb{font-size:14px;font-weight:300;color:var(--muted);max-width:520px;}
+  .famhead .fc{font-size:10px;color:var(--dim);letter-spacing:.2em;font-weight:600;}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .pcard{display:flex;flex-direction:column;overflow:hidden;border-radius:22px;color:var(--ink);transition:transform .22s,box-shadow .22s;}
+  .pcard:hover{transform:translateY(-4px);color:var(--ink);}
+  .pcard .img{height:150px;background-size:cover;background-position:center;position:relative;}
+  .pcard .img .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:600;letter-spacing:.1em;color:rgba(255,255,255,.85);}
+  .pcard .b{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1;}
+  .pc-name{font-size:16px;font-weight:500;letter-spacing:-0.02em;}
+  .pc-tags{display:flex;gap:6px;flex-wrap:wrap;}
+  .tag{font-size:8.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:var(--violet);}
+  .pc-blurb{font-size:12.5px;font-weight:400;line-height:1.6;color:#D3CBEC;flex:1;}
+  .pc-more{font-size:9px;color:var(--lilac);margin-top:2px;}
+  /* detail */
+  .d2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:22px;padding:0 var(--pad);max-width:1440px;margin:0 auto;}
+  .gal{padding:18px;}
+  .gal .big{width:100%;height:380px;object-fit:cover;border-radius:16px;display:block;background-size:cover;background-position:center;}
+  .gal .ph{width:100%;height:380px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:52px;font-weight:600;color:rgba(255,255,255,.85);}
+  .panel{padding:34px 36px 36px;}
+  .panel .intro{font-size:16px;font-weight:400;line-height:1.7;color:#EAE3F8;}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+  .chip{padding:10px 16px;border-radius:999px;font-size:9.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);}
+  .chip.on{background:var(--ink);color:var(--deep);border-color:transparent;}
+  .specgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px;}
+  .specgrid .k{font-size:9px;color:var(--faint);letter-spacing:.2em;text-transform:uppercase;font-weight:600;}
+  .specgrid .v{margin-top:7px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);font-size:14px;font-weight:300;}
+  .actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
+  .note{margin-top:22px;font-size:13.5px;font-weight:400;line-height:1.72;color:#C6BAE6;}
+  .sp{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.10);font-size:14px;font-weight:300;}
+  .sp .k{color:#A594CC;}
+  .desc h3,.varlist h3{font-size:11px;}
+  .desc-body{margin-top:14px;font-size:15.5px;font-weight:400;line-height:1.8;color:#E7DFF6;max-width:66ch;}
+  .desc-body p{margin:0 0 12px;}.desc-body ul{margin:10px 0;padding-left:18px;}.desc-body li{margin:6px 0;}
+  .desc-body h2,.desc-body h3,.desc-body h4{font-size:17px;font-weight:500;color:#fff;margin:16px 0 8px;letter-spacing:-0.01em;}
+  .related{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:16px;}
+  .rcard{padding:22px 24px;border-radius:20px;}
+  .cta-final{position:relative;margin:60px var(--pad) 30px;max-width:1320px;margin-left:auto;margin-right:auto;border-radius:36px;overflow:hidden;padding:66px 30px;text-align:center;}
+  .cta-final::before{content:"";position:absolute;inset:0;background:radial-gradient(100% 120% at 50% 30%,rgba(20,14,44,.10),rgba(20,14,44,.72) 78%);}
+  .cta-final>*{position:relative;}
+  .cta-final h2{font-size:clamp(30px,5vw,52px);font-weight:300;letter-spacing:-0.042em;}.cta-final h2 b{font-weight:600;}
+  .cta-final p{margin:18px auto 0;max-width:600px;font-size:16px;font-weight:400;line-height:1.7;color:#EAE3F8;}
+  footer.site{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;padding:40px var(--pad) 44px;max-width:1440px;margin:0 auto;}
+  footer .fnote{font-size:9.5px;color:var(--faint);letter-spacing:.1em;}
+  .modal-overlay{position:fixed;inset:0;z-index:100;background:rgba(6,2,22,.66);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px;}
+  .modal-overlay.open{display:flex;}
+  .modal{width:100%;max-width:560px;border-radius:28px;padding:34px 34px 32px;max-height:92vh;overflow:auto;position:relative;}
+  .modal h3{font-size:26px;font-weight:500;letter-spacing:-0.03em;}
+  .modal p.small{margin:8px 0 20px;font-size:13.5px;font-weight:300;color:var(--muted);line-height:1.6;}
+  .field{margin-bottom:13px;}.field label{display:block;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--violet);margin-bottom:6px;}
+  .field input,.field textarea{width:100%;padding:12px 15px;border-radius:13px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.16);color:var(--ink);font:inherit;font-size:14px;font-weight:300;}
+  .field textarea{min-height:84px;resize:vertical;}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--lilac);}
+  .row2{display:grid;grid-template-columns:1fr 1fr;gap:13px;}
+  .modal .x{position:absolute;top:16px;right:20px;font-size:22px;cursor:pointer;color:var(--muted);background:none;border:none;}
+  @media(max-width:1000px){:root{--pad:26px;}.pgrid{grid-template-columns:1fr 1fr;}.d2{grid-template-columns:1fr;}.related{grid-template-columns:1fr 1fr;}}
+  @media(max-width:640px){nav.pill{display:none;}.menu-btn{display:inline-flex;}.pgrid{grid-template-columns:1fr;}.specgrid{grid-template-columns:1fr;}.related{grid-template-columns:1fr;}}
+  #mobile-nav{display:none;flex-direction:column;gap:4px;padding:12px var(--pad);max-width:1440px;margin:0 auto;}
+  #mobile-nav.open{display:flex;}#mobile-nav a{padding:12px 10px;color:var(--ink);border-bottom:1px solid rgba(255,255,255,.08);}
+  .tint-NR{background:linear-gradient(135deg,#4a3f8a,#2a2350);}.tint-NBR{background:linear-gradient(135deg,#7a4e2e,#3a2a1a);}
+  .tint-CR{background:linear-gradient(135deg,#2e5a7a,#1a2f3a);}.tint-EPDM{background:linear-gradient(135deg,#2e7a5a,#1a3a2a);}
+  .tint-VMQ{background:linear-gradient(135deg,#8a4e7a,#3a2a35);}.tint-FKM{background:linear-gradient(135deg,#7a2e3e,#3a1a20);}
+  .tint-FVMQ{background:linear-gradient(135deg,#4e6a8a,#2a3040);}.tint-HNBR{background:linear-gradient(135deg,#6a5a2e,#302a1a);}
+  .tint-FEPM{background:linear-gradient(135deg,#5a2e7a,#2a1a3a);}.tint-PTFE{background:linear-gradient(135deg,#5a5f7a,#2a2c3a);}
+  .tint-none{background:linear-gradient(135deg,#3f3a6a,#241f45);}
+
+  .reveal{opacity:0;transform:translateY(20px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);will-change:opacity,transform;}
+  .reveal.in{opacity:1;transform:none;}
+  @media(prefers-reduced-motion:reduce){.reveal{opacity:1!important;transform:none!important;transition:none!important;}.brand img.mark{animation:none!important;}}
+  .hband::before{content:"";position:absolute;left:50%;top:34%;transform:translate(-50%,-34%);width:120%;height:170%;background:radial-gradient(50% 60% at 50% 50%,rgba(20,14,44,.6),transparent 72%);z-index:0;pointer-events:none;}
+  .hband>*{position:relative;z-index:1;}
+  .desc-body .lead{font-size:17px;font-weight:400;line-height:1.7;color:#F3EFFB;margin:0 0 4px;}
+  .desc-body .glance{list-style:none;padding:0;margin:18px 0 16px;display:grid;grid-template-columns:1fr 1fr;gap:0 30px;}
+  .desc-body .glance li{display:flex;justify-content:space-between;gap:14px;align-items:baseline;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.10);font-size:14px;}
+  .desc-body .glance li span{color:#B7A9D8;white-space:nowrap;}
+  .desc-body .glance li b{font-weight:500;color:#fff;text-align:right;}
+  .desc-body .close{color:#C9BFE6;font-size:14.5px;}
+  .btn{transition:transform .3s cubic-bezier(.16,1,.3,1),box-shadow .3s cubic-bezier(.16,1,.3,1);}
+  @media(max-width:640px){.desc-body .glance{grid-template-columns:1fr;}}
+
+  .drawband{position:relative;border-radius:30px;overflow:hidden;background:#0e0a20;}
+  .drawband img{width:100%;display:block;max-height:560px;object-fit:cover;opacity:.96;}
+  .drawband .db-cap{position:absolute;left:0;top:0;bottom:0;display:flex;flex-direction:column;justify-content:center;padding:44px 52px;max-width:520px;background:linear-gradient(90deg,rgba(14,10,32,.92),rgba(14,10,32,.45) 68%,transparent);}
+  .drawband .db-cap h2{font-size:clamp(26px,3.6vw,44px);font-weight:400;letter-spacing:-0.038em;margin-top:8px;}
+  .drawband .db-cap p{margin:12px 0 0;font-size:15.5px;font-weight:400;line-height:1.7;color:#E7DFF6;}
+  .d2about{display:grid;grid-template-columns:1.25fr 1fr;gap:22px;padding:0 var(--pad);max-width:1440px;margin:0 auto;}
+  .trust{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;padding:6px var(--pad) 0;max-width:1440px;margin:0 auto;}
+  .trust .t{padding:14px 24px;border-radius:999px;font-size:13px;font-weight:400;color:#DAD0F2;}
+  .trust .t b{font-weight:600;color:#fff;}
+  @media(max-width:1000px){.d2about{grid-template-columns:1fr;}.drawband .db-cap{position:static;max-width:none;background:rgba(14,10,32,.6);}}
+
+  .ab-story{max-width:760px;margin:6px auto 0;padding:0 var(--pad);text-align:center;}
+  .ab-story .lead{font-size:20px;font-weight:400;line-height:1.65;color:#F3EFFB;margin:0 0 16px;}
+  .ab-story p{font-size:16.5px;font-weight:400;line-height:1.8;color:#E3DBF3;margin:0 0 16px;}
+  .ab-draw{position:relative;max-width:1300px;margin:20px auto 0;padding:0 20px;}
+  .ab-draw img{width:100%;display:block;mix-blend-mode:screen;opacity:.98;
+    filter:brightness(.9) contrast(1.22);
+    -webkit-mask-image:radial-gradient(116% 130% at 50% 46%,#000 38%,rgba(0,0,0,0) 80%);
+            mask-image:radial-gradient(116% 130% at 50% 46%,#000 38%,rgba(0,0,0,0) 80%);}
+    .ab-lines{position:relative;max-width:1300px;margin:24px auto 0;height:clamp(460px,58vw,820px);border-radius:26px;overflow:hidden;-webkit-mask-image:radial-gradient(120% 130% at 50% 50%,#000 55%,rgba(0,0,0,0) 92%);mask-image:radial-gradient(120% 130% at 50% 50%,#000 55%,rgba(0,0,0,0) 92%);}
+  .ab-lines canvas{width:100%;height:100%;display:block;}
+  .ab-cap{max-width:720px;margin:-6px auto 0;padding:0 var(--pad);text-align:center;}
+  .ab-cap h2{font-size:clamp(24px,3.4vw,38px);font-weight:400;letter-spacing:-0.035em;margin-top:8px;}
+  .ab-cap p{margin:12px auto 0;font-size:15.5px;font-weight:400;line-height:1.72;color:#D9D0EE;}
+  .ab-stats{display:flex;flex-wrap:wrap;gap:14px 34px;justify-content:center;align-items:center;margin:22px auto 0;color:#CFC6E8;font-size:14px;font-weight:400;}
+  .ab-stats span{white-space:nowrap;}
+  .ab-stats b{color:#fff;font-weight:600;}
+  .ab-stats i{color:var(--faint);font-style:normal;}
+  .site-foot{max-width:1440px;margin:40px auto 0;padding:40px var(--pad) 34px;border-top:1px solid rgba(255,255,255,.10);}
+  .foot-top{display:grid;grid-template-columns:1.7fr 1fr 1fr 1.4fr;gap:30px;}
+  .foot-brand p{margin:14px 0 0;max-width:290px;font-size:13.5px;font-weight:400;line-height:1.7;color:#C6BAE6;}
+  .foot-col{display:flex;flex-direction:column;gap:10px;}
+  .foot-col .lbl{color:var(--faint);margin-bottom:4px;}
+  .foot-col a{color:#D9D0EE;font-size:14px;}.foot-col a:hover{color:#fff;}
+  .foot-addr{font-size:13px;color:#B7A9D8;line-height:1.6;}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-top:30px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:11px;color:var(--faint);letter-spacing:.06em;}
+  @media(max-width:800px){.foot-top{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.foot-top{grid-template-columns:1fr;}}
+  /* ---- material categories ---- */
+  .mband{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 var(--pad);max-width:1440px;margin:0 auto;}
+  .mcard{position:relative;display:block;overflow:hidden;border-radius:26px;color:var(--ink);min-height:260px;transition:transform .32s cubic-bezier(.16,1,.3,1),box-shadow .32s cubic-bezier(.16,1,.3,1);}
+  .mcard:hover{transform:translateY(-5px);color:var(--ink);}
+  .mcard .mimg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.5;transition:opacity .5s,transform .8s cubic-bezier(.16,1,.3,1);transform:scale(1.02);}
+  .mcard:hover .mimg{opacity:.66;transform:scale(1.07);}
+  .mcard::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,32,.28) 0%,rgba(14,10,32,.60) 52%,rgba(14,10,32,.90) 100%);}
+  .mcard .mb{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:26px 28px 24px;}
+  .mcard .mb h3{font-size:clamp(21px,2.4vw,27px);font-weight:500;letter-spacing:-0.032em;}
+  .mcard .mb p{margin:9px 0 0;font-size:13.5px;font-weight:400;line-height:1.62;color:#D6CCF0;max-width:34ch;}
+  .mcard .mb .mmore{margin-top:15px;font-size:9px;color:var(--lilac);}
+  .mcard .mcount{position:absolute;top:22px;right:24px;z-index:2;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#CFC4EC;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);}
+  .catnav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px;padding:6px var(--pad) 0;max-width:1440px;margin:0 auto;}
+  .catnav .lbl{margin-right:6px;color:var(--faint);}
+  .catnav a{padding:10px 18px;border-radius:999px;font-size:10.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);}
+  .catnav a.on{background:var(--ink);color:var(--deep);}
+  /* ---- grade groups (machined metal) ---- */
+  .gradewrap{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:0 var(--pad);max-width:1440px;margin:16px auto 0;}
+  .gradewrap.one{grid-template-columns:1fr;}
+  .gradegrp{padding:26px 28px 24px;}
+  .gradegrp h4{font-size:16px;font-weight:500;letter-spacing:-0.02em;color:#fff;margin:0;}
+  .gradegrp .gnote{margin:7px 0 0;font-size:12.5px;font-weight:400;line-height:1.6;color:#B7A9D8;}
+  .gcodes{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px;}
+  .gcodes.few{gap:9px;}
+  .gcodes.few .gcode{font-size:15px;padding:14px 22px;border-radius:12px;letter-spacing:.05em;}
+  .gcode{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:11.5px;letter-spacing:.02em;padding:7px 11px;border-radius:9px;background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.13);color:#E4DCF5;white-space:nowrap;}
+  .rail{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:0 var(--pad);max-width:1440px;margin:16px auto 0;}
+  .rstep{padding:24px 26px 26px;border-radius:22px;}
+  .rstep .n{color:var(--violet);font-size:10px;}
+  .rstep h4{margin:12px 0 0;font-size:16.5px;font-weight:500;letter-spacing:-0.022em;color:#fff;}
+  .rstep p{margin:9px 0 0;font-size:13.5px;font-weight:400;line-height:1.65;color:#CFC4EC;}
+  .mhero{display:grid;grid-template-columns:1.05fr 1fr;gap:22px;padding:0 var(--pad);max-width:1440px;margin:0 auto;align-items:stretch;}
+  .mhero .mphoto{border-radius:26px;overflow:hidden;min-height:340px;background-size:cover;background-position:center;}
+  .adv{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding:0 var(--pad);max-width:1440px;margin:16px auto 0;}
+  .advc{padding:24px 26px 26px;border-radius:22px;}
+  .advc h4{margin:0;font-size:15.5px;font-weight:500;color:#fff;letter-spacing:-0.02em;}
+  .advc p{margin:9px 0 0;font-size:13.5px;font-weight:400;line-height:1.65;color:#CFC4EC;}
+  @media(max-width:1000px){.mband{grid-template-columns:1fr;}.gradewrap{grid-template-columns:1fr;}.rail{grid-template-columns:1fr 1fr;}.mhero{grid-template-columns:1fr;}.adv{grid-template-columns:1fr;}}
+  @media(max-width:640px){.rail{grid-template-columns:1fr;}}
+
+</style>
+</head><body>
+<div class="bg-fallback"></div><canvas id="bg-shader"></canvas><div class="grain"></div>
+<svg width="0" height="0" style="position:absolute"><defs><filter id="liquid"><feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
+
+<header class="site">
+  <a class="brand" href="helix-aurora-live-home.html"><img class="mark" src="helix-mark-white.png" alt="Helix mark"><img class="word" src="helix-wordmark-white.png" alt="Helix Engineering"></a>
+  <nav class="pill glass">
+    <a href="products.html" class="on">Products</a>
+    <a href="helix-aurora-live-home.html#compounds">Compounds</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" class="">Contact</a>
+    <a href="#" class="cta" data-appt>Book an appointment</a>
+  </nav>
+  <div class="menu-btn glass lbl" onclick="document.getElementById('mobile-nav').classList.toggle('open')">Menu</div>
+</header>
+<div id="mobile-nav" class="glass">
+  <a href="products.html">Products</a><a href="helix-aurora-live-home.html#compounds">Compounds</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a><a href="#" data-appt>Book an appointment</a>
+</div>
+
+<section class="hband"><div class="lbl crumb"><a href="products.html">Home — Products</a> — Steel</div>
+<h1>Steel machined parts,<br><b>to your drawing.</b></h1></section>
+<div class="catnav"><span class="lbl">Category</span><a href="products.html" class="">Rubber</a><a href="aluminium.html" class="">Aluminium</a><a href="steel.html" class="on">Steel</a></div>
+<div class="mhero reveal" style="margin-top:22px">
+  <div class="panel glass">
+    <p class="intro">HELIX Engineering is a world class manufacturer of steel parts as per customer’s drawings and samples, in the steel varieties below and any other steel variety upon request.</p>
+    <div style="margin-top:26px"><div class="sp"><span class="k">Varieties</span><span>63 listed, plus any other upon request</span></div><div class="sp"><span class="k">Made to</span><span>Customer’s drawings / samples</span></div><div class="sp"><span class="k">Machines</span><span>Manual and CNC</span></div><div class="sp"><span class="k">Heat treatment</span><span>All types, upon request</span></div><div class="sp"><span class="k">Coating</span><span>Anti-rust coating upon request</span></div><div class="sp"><span class="k">Delivery</span><span>Free door delivery, DHL / FedEx, 3–4 days</span></div></div>
+    <div class="actions"><button class="btn btn-solid lbl" data-appt data-product="Steel machined parts">Book an appointment</button>
+    <button class="btn btn-ghost glass lbl" data-appt data-product="Steel machined parts — drawing review">Send a drawing</button></div>
+    <p class="note">Best in steel parts manufacturing and exporting high quality machined parts over the world.</p>
+  </div>
+  <div class="mphoto glass" style="background-image:url('https://helixenggproducts.com/wp-content/uploads/2022/12/Steel-Machined-Parts-400x320-1.jpg')"></div>
+</div>
+
+<section class="blk"><div class="famhead" style="margin-bottom:0"><div><h2>Steel varieties</h2></div>
+<div class="fb">HELIX Engineering is a world class manufacturer of steel parts as per customer’s drawings/samples in all the below steel varieties — and any other steel variety upon request.</div><div class="fc">63 LISTED</div></div></section>
+<div class="gradewrap one"><div class="gradegrp glass reveal"><div class="gcodes"><span class="gcode">EN8</span><span class="gcode">EN9</span><span class="gcode">EN42</span><span class="gcode">EN45</span><span class="gcode">1015</span><span class="gcode">1020</span><span class="gcode">1030</span><span class="gcode">C45</span><span class="gcode">1040</span><span class="gcode">1010</span><span class="gcode">1008</span><span class="gcode">1541</span><span class="gcode">1144</span><span class="gcode">1141</span><span class="gcode">EN8 HIGH MANGENESE</span><span class="gcode">ST52</span><span class="gcode">N16</span><span class="gcode">C60</span><span class="gcode">C75</span><span class="gcode">C70</span><span class="gcode">EN18</span><span class="gcode">EN19</span><span class="gcode">EN24</span><span class="gcode">EN25</span><span class="gcode">EN36</span><span class="gcode">EN26</span><span class="gcode">4140</span><span class="gcode">4145</span><span class="gcode">709M40</span><span class="gcode">4150</span><span class="gcode">41CR4</span><span class="gcode">34CRNIMO6</span><span class="gcode">4340</span><span class="gcode">8620</span><span class="gcode">20MNCR5</span><span class="gcode">17CRNIMO6-7</span><span class="gcode">18CRNIMO7-6</span><span class="gcode">16MNCR5</span><span class="gcode">EN39B</span><span class="gcode">EN40B</span><span class="gcode">30CRMOV9</span><span class="gcode">9310</span><span class="gcode">EN48A</span><span class="gcode">30CRNIMO8</span><span class="gcode">21CRMOV5-7</span><span class="gcode">EN30B</span><span class="gcode">EN41B</span><span class="gcode">34CRALMO7</span><span class="gcode">41CRALMO7</span><span class="gcode">4130</span><span class="gcode">4135</span><span class="gcode">4330V</span><span class="gcode">20CRMOV-TIB</span><span class="gcode">4320</span><span class="gcode">EN1A</span><span class="gcode">EN47</span><span class="gcode">EN31</span><span class="gcode">52100</span><span class="gcode">CAST IRON</span><span class="gcode">SG IRON</span><span class="gcode">STAINLESS STEEL</span><span class="gcode">BRASS</span><span class="gcode">COPPER</span></div></div></div>
+
+<section class="blk"><div class="famhead" style="margin-bottom:0"><div><h2>How the part is made</h2></div>
+<div class="fb">An array of manual and CNC machines, producing machined parts to a very accurate precision.</div></div></section>
+<div class="rail"><div class="rstep glass reveal"><div class="n lbl">01</div><h4>Drawings / samples</h4><p>Parts are made as per the customer’s drawings or samples.</p></div><div class="rstep glass reveal"><div class="n lbl">02</div><h4>Rough machining</h4><p>Rough machining is done on manual machines including lathes and milling machines.</p></div><div class="rstep glass reveal"><div class="n lbl">03</div><h4>Final turning on CNC</h4><p>Final turning is done on CNC machines, to bring out very high cost effectiveness without compromising on accuracy.</p></div><div class="rstep glass reveal"><div class="n lbl">04</div><h4>Heat treatment &amp; coating</h4><p>HELIX Engineering also provides all types of heat treatment processes and anti-rust coating services for the steel parts supplied, upon request.</p></div></div>
+
+<section class="blk"><div class="famhead" style="margin-bottom:0"><div><h2>Services on the steel parts we supply</h2></div>
+<div class="fb">HELIX will serve as your trustworthy partner among steel manufacturers by manufacturing and supplying the best quality products with a highly qualified team.</div></div></section>
+<div class="adv"><div class="advc glass reveal"><h4>All types of heat treatment</h4><p>Provided for the steel parts supplied, upon request.</p></div><div class="advc glass reveal"><h4>Anti-rust coating</h4><p>Anti-rust coating services for the steel parts supplied, upon request.</p></div><div class="advc glass reveal"><h4>Free door delivery</h4><p>All our orders would be freely door delivered via DHL / FedEx with a transit time of just 3–4 days to any part of the world.</p></div></div>
+
+<section class="blk"><div class="lbl crumb">Other categories</div>
+<div class="related" style="grid-template-columns:repeat(2,1fr)">
+  <a class="rcard glass" href="products.html"><div style="font-size:17px;font-weight:500;letter-spacing:-0.02em">Rubber parts</div><div class="lbl" style="margin-top:9px;font-size:9px;color:var(--dim)">13 families · 132 variants</div></a>
+  <a class="rcard glass" href="aluminium.html"><div style="font-size:17px;font-weight:500;letter-spacing:-0.02em">Aluminium machined parts</div><div class="lbl" style="margin-top:9px;font-size:9px;color:var(--dim)">Machined to drawing</div></a>
+</div></section>
+
+<section class="cta-final glass">
+  <h2>Tell us what <b>has to hold.</b></h2>
+  <p>Medium, pressure, temperature range and quantity. That is enough for us to specify a compound and book you an appointment.</p>
+  <div style="margin-top:28px;"><button class="btn btn-solid lbl" data-appt>Book an appointment</button></div>
+</section>
+<footer class="site-foot">
+ <div class="foot-top">
+  <div class="foot-brand"><div class="brand"><img class="mark" style="width:50px" src="helix-mark-white.png" alt=""><img class="word" style="width:80px" src="helix-wordmark-white.png" alt=""></div>
+   <p>Rubber, aluminium and steel parts, made to your drawing in Coimbatore since 1999. Shipped worldwide.</p></div>
+  <div class="foot-col"><div class="lbl">Explore</div><a href="products.html">Rubber parts</a><a href="aluminium.html">Aluminium parts</a><a href="steel.html">Steel parts</a><a href="about.html">About</a><a href="contact.html">Contact us</a></div>
+  <div class="foot-col"><div class="lbl">Legal</div><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms &amp; conditions</a></div>
+  <div class="foot-col"><div class="lbl">Get in touch</div><a href="mailto:sales@helixengineering.co.in">sales@helixengineering.co.in</a><a href="tel:+919003671545">(+91) 90036 71545</a><span class="foot-addr">5/516 KNG Pudur Road,<br>Coimbatore 641108, Tamil Nadu, India</span><span class="foot-addr">Mon–Fri 09:00–18:00 · Sat–Sun 10:00–16:00</span></div>
+ </div>
+ <div class="foot-bottom"><span>© 2026 Helix Engineering, Coimbatore</span><span>ISO 9001 certified · ITAR registered</span></div>
+</footer>
+
+<div class="modal-overlay" id="appt"><div class="modal glass"><button class="x" onclick="closeAppt()">×</button>
+<h3>Book an appointment</h3>
+<p class="small">Tell us the part and the duty. We reply within one business day to fix a call or a factory visit. A material suggestion is not engineering approval until the application is confirmed.</p>
+<form onsubmit="return submitAppt(event)">
+  <div class="row2"><div class="field"><label>Name</label><input required name="name" placeholder="Your name"></div><div class="field"><label>Company</label><input name="company" placeholder="Company"></div></div>
+  <div class="row2"><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@company.com"></div><div class="field"><label>Phone</label><input name="phone" placeholder="Phone / WhatsApp"></div></div>
+  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Preferred date</label><input type="date" name="date"></div></div>
+  <div class="field"><label>Requirement</label><textarea name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
+  <button class="btn btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send appointment request</button>
+</form></div></div>
+
+<script>
+const appt=document.getElementById('appt');
+function openAppt(p){appt.classList.add('open');document.body.style.overflow='hidden';if(p)document.getElementById('appt-product').value=p;}
+function closeAppt(){appt.classList.remove('open');document.body.style.overflow='';}
+appt.addEventListener('click',e=>{if(e.target===appt)closeAppt();});
+function bindAppt(){document.querySelectorAll('[data-appt]').forEach(b=>{if(b._b)return;b._b=1;b.addEventListener('click',e=>{e.preventDefault();openAppt(b.getAttribute('data-product'));const m=document.getElementById('mobile-nav');if(m)m.classList.remove('open');});});}
+bindAppt();
+
+const _revObs=('IntersectionObserver'in window)?new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target;const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('reveal'));const i=Math.max(0,sibs.indexOf(el));el.style.transitionDelay=(Math.min(i,8)*55)+'ms';el.classList.add('in');_revObs.unobserve(el);}});},{rootMargin:'0px 0px -6% 0px',threshold:0.08}):null;
+function observeReveals(){if(!_revObs){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));return;}document.querySelectorAll('.reveal:not(.in)').forEach(el=>_revObs.observe(el));}
+observeReveals();
+function submitAppt(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());
+ const body=`Name: ${d.name}%0ACompany: ${d.company||''}%0AEmail: ${d.email}%0APhone: ${d.phone||''}%0AProduct: ${d.product||''}%0APreferred date: ${d.date||''}%0A%0A${(d.message||'').replace(/\n/g,'%0A')}`;
+ window.location.href=`mailto:sales@helixengineering.co.in?subject=Appointment request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;return false;}
+</script>
+<script>
+(function(){const cv=document.getElementById('bg-shader');const gl=cv.getContext('webgl')||cv.getContext('experimental-webgl');if(!gl){cv.style.display='none';return;}
+function rz(){cv.width=Math.floor(innerWidth*Math.min(devicePixelRatio,1.5));cv.height=Math.floor(innerHeight*Math.min(devicePixelRatio,1.5));gl.viewport(0,0,cv.width,cv.height);}addEventListener('resize',rz);rz();
+const vs=`attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}`;
+const fs=`precision highp float;uniform vec2 r;uniform float t;
+vec3 c1=vec3(0.078,0.055,0.173);vec3 c2=vec3(0.355,0.247,0.659);vec3 c3=vec3(0.788,0.647,0.961);vec3 c4=vec3(0.478,0.874,0.961);vec3 c5=vec3(0.694,0.310,0.620);
+float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),f.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),f.x),f.y);}
+float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p*=2.03;a*=.5;}return v;}
+void main(){vec2 uv=gl_FragCoord.xy/r;vec2 q=uv;q.x*=r.x/r.y;float tt=t*0.045;
+float f1=fbm(q*1.6+vec2(tt,-tt*.6));float f2=fbm(q*2.3+vec2(-tt*.7+f1,tt*.5));float f3=fbm(q*1.1+vec2(f2*1.2,f1-tt*.3));
+vec3 col=c1;col=mix(col,c2,smoothstep(.15,.85,f1));col=mix(col,c3,smoothstep(.35,.95,f2)*0.55);col=mix(col,c5,smoothstep(.55,1.0,f3)*0.45);col=mix(col,c4,smoothstep(.62,1.0,f1*f2)*0.5);
+float vig=smoothstep(1.15,.25,length(uv-vec2(.5,.42)));col=mix(c1,col,clamp(vig+.15,0.,1.));col+=(h(gl_FragCoord.xy+t)-.5)*0.02;gl_FragColor=vec4(col,1.);}`;
+function sh(t,s){const o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(o);return o;}
+const pr=gl.createProgram();gl.attachShader(pr,sh(gl.VERTEX_SHADER,vs));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,fs));gl.linkProgram(pr);
+if(!gl.getProgramParameter(pr,gl.LINK_STATUS)){cv.style.display='none';return;}gl.useProgram(pr);
+const buf=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buf);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+const lp=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(lp);gl.vertexAttribPointer(lp,2,gl.FLOAT,false,0,0);
+const ur=gl.getUniformLocation(pr,'r'),ut=gl.getUniformLocation(pr,'t');const t0=performance.now();let raf;const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+function draw(now){gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,reduce?12:(now-t0)/1000);gl.drawArrays(gl.TRIANGLES,0,3);raf=requestAnimationFrame(draw);}
+if(reduce){gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,12);gl.drawArrays(gl.TRIANGLES,0,3);}else raf=requestAnimationFrame(draw);
+document.addEventListener('visibilitychange',()=>{if(document.hidden)cancelAnimationFrame(raf);else if(!reduce)raf=requestAnimationFrame(draw);});})();
+</script>
+</body></html>
