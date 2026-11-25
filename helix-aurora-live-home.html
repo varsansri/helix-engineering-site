@@ -202,6 +202,16 @@
   .mcard .mb .mmore{margin-top:16px;font-size:9px;color:var(--lilac);}
   .mcard .mcount{position:absolute;top:22px;right:24px;z-index:2;font-size:9px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:#CFC4EC;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);}
   @media(max-width:1000px){.mband{grid-template-columns:1fr;}}
+
+  /* DHL free delivery: thin strip above the menu + badge on product pages */
+  .dhl-strip{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 16px;background:rgba(255,204,0,.10);border-bottom:1px solid rgba(255,204,0,.28);font-size:12px;letter-spacing:.01em;color:#F3EEFF;text-align:center;}
+  .dhl-strip img{height:16px;width:auto;border-radius:3px;display:block;flex:none;}
+  .dhl-strip b{color:#FFCC00;font-weight:600;}
+  .dhl-badge{display:flex;align-items:center;gap:14px;margin-top:22px;padding:12px 14px;border-radius:16px;background:rgba(255,204,0,.08);border:1px solid rgba(255,204,0,.35);}
+  .dhl-badge img{height:30px;width:auto;border-radius:5px;flex:none;}
+  .dhl-badge b{display:block;font-size:15px;font-weight:600;color:#FFCC00;letter-spacing:-.01em;}
+  .dhl-badge span{display:block;font-size:12.5px;color:#D9D1EE;margin-top:2px;}
+  @media(max-width:640px){.dhl-strip{font-size:11px;gap:8px}.dhl-strip img{height:13px}.dhl-badge{gap:12px}.dhl-badge img{height:20px}}
 </style>
 </head>
 <body>
@@ -217,6 +227,7 @@
   <feDisplacementMap in="SourceGraphic" in2="n" scale="14" xChannelSelector="R" yChannelSelector="G"/></filter>
 </defs></svg>
 
+<div class="dhl-strip"><img src="dhl-logo.png" alt="DHL"><span><b>Free delivery</b> by DHL, to your door anywhere in the world</span></div>
 <header class="site">
   <a class="brand" href="#top" aria-label="Helix Engineering">
     <img class="mark" src="helix-mark-white.png" alt="Helix mark">
