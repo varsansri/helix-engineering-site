@@ -5,6 +5,22 @@
 
 
 <style>
+  .dhl-sec{padding-bottom:30px!important;}
+  /* DHL band: under the homepage hero and on the category page */
+  .dhl-band{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:34px;padding:30px 38px;border-color:rgba(255,204,0,.30);background:linear-gradient(160deg,rgba(255,204,0,.10),rgba(255,255,255,.04) 55%,rgba(255,255,255,.02));}
+  .dhl-band .logo{height:58px;width:auto;border-radius:9px;display:block;clip-path:inset(0 0 0 0);}
+  .dhl-band .lbl{color:#FFCC00;font-size:10px;letter-spacing:.18em;}
+  .dhl-band h3{margin:8px 0 6px;font-size:clamp(22px,2.4vw,32px);font-weight:300;letter-spacing:-.03em;line-height:1.1;color:#fff;}
+  .dhl-band h3 b{font-weight:600;}
+  .dhl-band p{margin:0;font-size:15px;line-height:1.55;color:#D9D1EE;max-width:560px;}
+  .dhl-band ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;}
+  .dhl-band li{font-size:12px;letter-spacing:.04em;padding:6px 14px;border-radius:999px;border:1px solid rgba(255,204,0,.32);color:#FFE27A;white-space:nowrap;}
+  /* one-time arrival: the logo wipes in left to right after the band appears */
+  .dhl-band.reveal .logo{clip-path:inset(0 100% 0 0);transition:clip-path .7s cubic-bezier(.23,1,.32,1) .25s;}
+  .dhl-band.reveal.in .logo{clip-path:inset(0 0 0 0);}
+  @media(prefers-reduced-motion:reduce){.dhl-band.reveal .logo{clip-path:none!important;transition:none!important;}}
+  @media(max-width:860px){.dhl-band{grid-template-columns:1fr;gap:18px;padding:26px 24px;text-align:left}.dhl-band .logo{height:40px}.dhl-band ul{flex-direction:row;flex-wrap:wrap}}
+
   /* DHL free delivery: thin strip above the menu + badge on product pages */
   .dhl-strip{display:flex;align-items:center;justify-content:center;gap:10px;padding:6px 16px;background:rgba(255,204,0,.10);border-bottom:1px solid rgba(255,204,0,.28);font-size:12px;letter-spacing:.01em;color:#F3EEFF;text-align:center;}
   .dhl-strip img{height:16px;width:auto;border-radius:3px;display:block;flex:none;}
@@ -222,7 +238,6 @@
 <div class="bg-fallback"></div><canvas id="bg-shader"></canvas><div class="grain"></div>
 <svg width="0" height="0" style="position:absolute"><defs><filter id="liquid"><feTurbulence type="fractalNoise" baseFrequency="0.008 0.012" numOctaves="2" seed="7" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="12" xChannelSelector="R" yChannelSelector="G"/></filter></defs></svg>
 
-<div class="dhl-strip"><img src="dhl-logo.png" alt="DHL"><span><b>Free delivery</b> by DHL, to your door anywhere in the world</span></div>
 <header class="site">
   <a class="brand" href="helix-aurora-live-home.html"><img class="mark" src="helix-mark-white.png" alt="Helix mark"><img class="word" src="helix-wordmark-white.png" alt="Helix Engineering"></a>
   <nav class="pill glass">
