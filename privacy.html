@@ -97,9 +97,10 @@
   .specgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px;}
   .specgrid .k{font-size:9px;color:var(--faint);letter-spacing:.2em;text-transform:uppercase;font-weight:600;}
   .specgrid label{display:block;}
-  .specgrid input.v{display:block;width:100%;box-sizing:border-box;color:var(--ink);font-family:inherit;outline:none;transition:border-color .15s,background .15s;}
-  .specgrid input.v::placeholder{color:var(--dim);}
-  .specgrid input.v:focus{border-color:var(--lilac);background:rgba(255,255,255,.09);}
+  .specgrid label.wide{grid-column:1/-1;}
+  .specgrid input.v,.specgrid textarea.v{display:block;width:100%;box-sizing:border-box;color:var(--ink);font-family:inherit;outline:none;transition:border-color .15s,background .15s;}
+  .specgrid .v::placeholder{color:var(--dim);}
+  .specgrid .v:focus{border-color:var(--lilac);background:rgba(255,255,255,.09);}
   .chip.pick{cursor:pointer;color:var(--ink);font-family:inherit;}
   .chip.pick:hover{border-color:rgba(255,255,255,.35);}
   .chip.pick.on{color:var(--deep);}
@@ -241,6 +242,8 @@
   @media(max-width:640px){.rail{grid-template-columns:1fr;}}
 
 
+  textarea.qty,.field textarea.qty{display:block;width:100%;box-sizing:border-box;min-height:0;resize:none;overflow:hidden;line-height:1.4;font-family:inherit;}
+  @media (max-width:640px){textarea.qty,.field textarea.qty{height:calc(2.8em + 26px);}}
   .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border-radius:999px;background:#25D366;color:#0B2E17;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s cubic-bezier(.23,1,.32,1);}
   .wa-float:hover{color:#0B2E17;transform:translateY(-2px);}
   .wa-float:active{transform:scale(.97);}
@@ -367,7 +370,8 @@
 <form onsubmit="return submitAppt(event)">
   <div class="row2"><div class="field"><label>Name</label><input required name="name" placeholder="Your name"></div><div class="field"><label>Company</label><input name="company" placeholder="Company"></div></div>
   <div class="row2"><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@company.com"></div><div class="field"><label>Phone</label><input name="phone" placeholder="Phone / WhatsApp"></div></div>
-  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Quantity</label><input id="appt-qty" name="qty" placeholder="e.g. 5,000 pcs"></div></div>
+  <div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div>
+  <div class="field"><label>Quantity</label><textarea class="qty" rows="1" id="appt-qty" name="qty" placeholder="Any Custom Quantity can be manufactured"></textarea></div>
   <div class="field"><label>Requirement</label><textarea id="appt-msg" name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
   <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send quote request</button>
 </form></div></div>
