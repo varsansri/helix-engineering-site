@@ -233,6 +233,11 @@
   @media(max-width:1000px){.mband{grid-template-columns:1fr;}.gradewrap{grid-template-columns:1fr;}.rail{grid-template-columns:1fr 1fr;}.mhero{grid-template-columns:1fr;}.adv{grid-template-columns:1fr;}}
   @media(max-width:640px){.rail{grid-template-columns:1fr;}}
 
+
+  .wa-float{position:fixed;right:22px;bottom:22px;z-index:60;display:flex;align-items:center;gap:10px;padding:12px 18px 12px 14px;border-radius:999px;background:#25D366;color:#0B2E17;font-weight:600;font-size:14px;text-decoration:none;box-shadow:0 10px 30px rgba(0,0,0,.35);transition:transform .2s cubic-bezier(.23,1,.32,1);}
+  .wa-float:hover{color:#0B2E17;transform:translateY(-2px);}
+  .wa-float:active{transform:scale(.97);}
+  @media (max-width:640px){.wa-float span{display:none;}.wa-float{padding:13px;right:16px;bottom:16px;}}
 </style>
 </head><body>
 <div class="bg-fallback"></div><canvas id="bg-shader"></canvas><div class="grain"></div>
@@ -245,19 +250,19 @@
     <a href="helix-aurora-live-home.html#compounds">Compounds</a>
     <a href="about.html">About</a>
     <a href="contact.html" class="">Contact</a>
-    <a href="#" class="cta" data-appt>Book an appointment</a>
+    <a href="#" class="cta" data-appt>Request a Quote</a>
   </nav>
   <div class="menu-btn glass lbl" onclick="document.getElementById('mobile-nav').classList.toggle('open')">Menu</div>
 </header>
 <div id="mobile-nav" class="glass">
   <a href="products.html">Products</a><a href="helix-aurora-live-home.html#compounds">Compounds</a>
-  <a href="about.html">About</a><a href="contact.html">Contact</a><a href="#" data-appt>Book an appointment</a>
+  <a href="about.html">About</a><a href="contact.html">Contact</a><a href="#" data-appt>Request a Quote</a>
 </div>
 <section class="hband"><div class="lbl crumb">Home — About</div><h1>Twenty-five years of <b>sealing.</b></h1></section><section class="ab-story"><p class="lead">Helix Engineering has moulded rubber sealing components in Coimbatore since 1999 — made to the drawing, in the compound the application needs.</p><p>We make customised parts to our customers’ drawings and samples — down to one or two pieces — with 100% conformance to specification. Rubber is our craft: a deep catalogue of O-rings, seals, gaskets and moulded components in ten compounds, chosen for the application rather than a price list.</p></section><div class="ab-lines"><canvas id="spiral"></canvas></div><section class="ab-cap reveal"><div class="lbl eyebrow">Our journey</div><h2>From a Coimbatore workshop to a global works</h2><p>What began as a small moulding shop in 1999 now serves customers on five continents — the same care for the part that has to hold, at a far larger scale.</p></section><section class="ab-story"><div class="ab-stats reveal"><span><b>Since 1999</b></span><i>·</i><span><b>ISO 9001</b> certified</span><i>·</i><span><b>ITAR</b> registered</span><i>·</i><span><b>13</b> product lines</span><i>·</i><span><b>10</b> compounds</span><i>·</i><span><b>Free</b> DHL / FedEx delivery</span></div></section><div class="ab-draw"><img src="gen/journey-2.png" alt=""></div><section class="ab-cap reveal"><div class="lbl eyebrow">Reach</div><h2>Shipped to the world</h2><p>Helix exports to the USA, Canada, Argentina, Trinidad &amp; Tobago, the UK, Europe, the UAE, Singapore, Malaysia and New Zealand — with free door delivery by DHL and FedEx in three to four days.</p></section>
 <section class="cta-final glass">
   <h2>Tell us what <b>has to hold.</b></h2>
-  <p>Medium, pressure, temperature range and quantity. That is enough for us to specify a compound and book you an appointment.</p>
-  <div style="margin-top:28px;"><button class="btn btn-lg btn-solid lbl" data-appt>Book an appointment</button></div>
+  <p>Medium, pressure, temperature range and quantity. That is enough for us to specify a compound and send you a quote.</p>
+  <div style="margin-top:28px;"><button class="btn btn-lg btn-solid lbl" data-appt>Request a Quote</button></div>
 </section>
 <footer class="site-foot">
  <div class="foot-top">
@@ -265,20 +270,21 @@
    <p>Rubber, aluminium and steel parts, made to your drawing in Coimbatore since 1999. Shipped worldwide.</p></div>
   <div class="foot-col"><div class="lbl">Explore</div><a href="products.html">Rubber parts</a><a href="aluminium.html">Aluminium parts</a><a href="steel.html">Steel parts</a><a href="about.html">About</a><a href="contact.html">Contact us</a></div>
   <div class="foot-col"><div class="lbl">Legal</div><a href="privacy.html">Privacy policy</a><a href="terms.html">Terms &amp; conditions</a></div>
-  <div class="foot-col"><div class="lbl">Get in touch</div><a href="mailto:sales@helixengineering.co.in">sales@helixengineering.co.in</a><a href="tel:+919003671545">(+91) 90036 71545</a><span class="foot-addr">5/516 KNG Pudur Road,<br>Coimbatore 641108, Tamil Nadu, India</span><span class="foot-addr">Mon–Fri 09:00–18:00 · Sat–Sun 10:00–16:00</span></div>
+  <div class="foot-col"><div class="lbl">Get in touch</div><a href="mailto:sales@helixengineering.co.in">sales@helixengineering.co.in</a><a href="tel:+919003671545">(+91) 90036 71545</a><a href="https://wa.me/919003671545?text=Hello%20Helix%20Engineering%2C%20I%20would%20like%20a%20quote." target="_blank" rel="noopener">WhatsApp us</a><span class="foot-addr">5/516 KNG Pudur Road,<br>Coimbatore 641108, Tamil Nadu, India</span><span class="foot-addr">Mon–Fri 09:00–18:00 · Sat–Sun 10:00–16:00</span></div>
  </div>
  <div class="foot-bottom"><span>© 2026 Helix Engineering, Coimbatore</span><span>ISO 9001 certified · ITAR registered</span></div>
 </footer>
 
+<a class="wa-float" href="https://wa.me/919003671545?text=Hello%20Helix%20Engineering%2C%20I%20would%20like%20a%20quote." target="_blank" rel="noopener" aria-label="Chat with Helix Engineering on WhatsApp"><svg viewBox="0 0 32 32" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M16 3C9 3 3.3 8.6 3.3 15.6c0 2.2.6 4.4 1.7 6.3L3 29l7.3-1.9c1.8 1 3.8 1.5 5.8 1.5 7 0 12.7-5.6 12.7-12.6S23 3 16 3zm0 23.1c-1.9 0-3.7-.5-5.3-1.4l-.4-.2-4.3 1.1 1.2-4.2-.3-.4c-1-1.6-1.5-3.5-1.5-5.4C5.4 9.8 10.2 5.1 16 5.1s10.6 4.7 10.6 10.5S21.8 26.1 16 26.1zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2-.2.3-.8 1-1 1.2-.2.2-.4.2-.7.1-.3-.2-1.3-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.2-.2-.3 0-.5.1-.7l.5-.6c.2-.2.2-.3.3-.6.1-.2.1-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.1-1.2 2.8s1.2 3.2 1.4 3.5c.2.2 2.4 3.6 5.8 5 .8.4 1.4.6 1.9.7.8.3 1.5.2 2.1.1.6-.1 1.9-.8 2.2-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg><span>WhatsApp us</span></a>
 <div class="modal-overlay" id="appt"><div class="modal glass"><button class="x" onclick="closeAppt()">×</button>
-<h3>Book an appointment</h3>
-<p class="small">Tell us the part and the duty. We reply within one business day to fix a call or a factory visit. A material suggestion is not engineering approval until the application is confirmed.</p>
+<h3>Request a Quote</h3>
+<p class="small">Tell us the part and the duty. We reply within one business day with your quote. A material suggestion is not engineering approval until the application is confirmed.</p>
 <form onsubmit="return submitAppt(event)">
   <div class="row2"><div class="field"><label>Name</label><input required name="name" placeholder="Your name"></div><div class="field"><label>Company</label><input name="company" placeholder="Company"></div></div>
   <div class="row2"><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@company.com"></div><div class="field"><label>Phone</label><input name="phone" placeholder="Phone / WhatsApp"></div></div>
-  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Preferred date</label><input type="date" name="date"></div></div>
+  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Quantity</label><input name="qty" placeholder="e.g. 5,000 pcs"></div></div>
   <div class="field"><label>Requirement</label><textarea name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
-  <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send appointment request</button>
+  <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send quote request</button>
 </form></div></div>
 <script>
 const appt=document.getElementById('appt');
@@ -292,8 +298,8 @@ const _revObs=('IntersectionObserver'in window)?new IntersectionObserver((es)=>{
 function observeReveals(){if(!_revObs){document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));return;}document.querySelectorAll('.reveal:not(.in)').forEach(el=>_revObs.observe(el));}
 observeReveals();
 function submitAppt(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());
- const body=`Name: ${d.name}%0ACompany: ${d.company||''}%0AEmail: ${d.email}%0APhone: ${d.phone||''}%0AProduct: ${d.product||''}%0APreferred date: ${d.date||''}%0A%0A${(d.message||'').replace(/\n/g,'%0A')}`;
- window.location.href=`mailto:sales@helixengineering.co.in?subject=Appointment request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;return false;}
+ const body=`Name: ${d.name}%0ACompany: ${d.company||''}%0AEmail: ${d.email}%0APhone: ${d.phone||''}%0AProduct: ${d.product||''}%0AQuantity: ${d.qty||''}%0A%0A${(d.message||'').replace(/\n/g,'%0A')}`;
+ window.location.href=`mailto:sales@helixengineering.co.in?subject=Quote request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;return false;}
 </script><script>
 (function(){const cv=document.getElementById('bg-shader');const gl=cv.getContext('webgl')||cv.getContext('experimental-webgl');if(!gl){cv.style.display='none';return;}
 function rz(){cv.width=Math.floor(innerWidth*Math.min(devicePixelRatio,1.5));cv.height=Math.floor(innerHeight*Math.min(devicePixelRatio,1.5));gl.viewport(0,0,cv.width,cv.height);}addEventListener('resize',rz);rz();
