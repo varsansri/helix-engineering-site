@@ -96,6 +96,13 @@
   .chip.on{background:var(--ink);color:var(--deep);border-color:transparent;}
   .specgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px;}
   .specgrid .k{font-size:9px;color:var(--faint);letter-spacing:.2em;text-transform:uppercase;font-weight:600;}
+  .specgrid label{display:block;}
+  .specgrid input.v{display:block;width:100%;box-sizing:border-box;color:var(--ink);font-family:inherit;outline:none;transition:border-color .15s,background .15s;}
+  .specgrid input.v::placeholder{color:var(--dim);}
+  .specgrid input.v:focus{border-color:var(--lilac);background:rgba(255,255,255,.09);}
+  .chip.pick{cursor:pointer;color:var(--ink);font-family:inherit;}
+  .chip.pick:hover{border-color:rgba(255,255,255,.35);}
+  .chip.pick.on{color:var(--deep);}
   .specgrid .v{margin-top:7px;padding:12px 16px;border-radius:12px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);font-size:14px;font-weight:500;}
   .actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
   .note{margin-top:22px;font-size:13.5px;font-weight:500;line-height:1.72;color:#D8CEEF;}
@@ -334,13 +341,18 @@
 <form onsubmit="return submitAppt(event)">
   <div class="row2"><div class="field"><label>Name</label><input required name="name" placeholder="Your name"></div><div class="field"><label>Company</label><input name="company" placeholder="Company"></div></div>
   <div class="row2"><div class="field"><label>Email</label><input required type="email" name="email" placeholder="you@company.com"></div><div class="field"><label>Phone</label><input name="phone" placeholder="Phone / WhatsApp"></div></div>
-  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Quantity</label><input name="qty" placeholder="e.g. 5,000 pcs"></div></div>
-  <div class="field"><label>Requirement</label><textarea name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
+  <div class="row2"><div class="field"><label>Product of interest</label><input id="appt-product" name="product" placeholder="e.g. Viton O-Ring"></div><div class="field"><label>Quantity</label><input id="appt-qty" name="qty" placeholder="e.g. 5,000 pcs"></div></div>
+  <div class="field"><label>Requirement</label><textarea id="appt-msg" name="message" placeholder="Medium, pressure, temperature range, quantity."></textarea></div>
   <button class="btn btn-lg btn-solid lbl" type="submit" style="width:100%;margin-top:4px;">Send quote request</button>
 </form></div></div>
 <script>
 const appt=document.getElementById('appt');
-function openAppt(p){appt.classList.add('open');document.body.style.overflow='hidden';if(p)document.getElementById('appt-product').value=p;}
+function openAppt(p){appt.classList.add('open');document.body.style.overflow='hidden';if(p)document.getElementById('appt-product').value=p;
+ const pq=document.getElementById('pq');if(pq){const g=n=>(pq.querySelector('[name='+n+']')||{}).value||'';const c=[...document.querySelectorAll('.chip.pick.on')].map(x=>x.dataset.c).join(', ');
+  const lines=[c&&('Compound: '+c),g('id')&&('Inside diameter: '+g('id')+' mm'),g('section')&&('Section: '+g('section')+' mm'),g('hardness')&&('Hardness: '+g('hardness'))].filter(Boolean);
+  if(g('qty'))document.getElementById('appt-qty').value=g('qty');
+  const m=document.getElementById('appt-msg');if(lines.length&&m&&!m.value.trim())m.value=lines.join(String.fromCharCode(10))+String.fromCharCode(10);}}
+document.addEventListener('click',e=>{const ch=e.target.closest('.chip.pick');if(!ch)return;const on=!ch.classList.contains('on');ch.parentElement.querySelectorAll('.chip.pick').forEach(x=>x.classList.remove('on'));if(on)ch.classList.add('on');});
 function closeAppt(){appt.classList.remove('open');document.body.style.overflow='';}
 appt.addEventListener('click',e=>{if(e.target===appt)closeAppt();});
 function bindAppt(){document.querySelectorAll('[data-appt]').forEach(b=>{if(b._b)return;b._b=1;b.addEventListener('click',e=>{e.preventDefault();openAppt(b.getAttribute('data-product'));const m=document.getElementById('mobile-nav');if(m)m.classList.remove('open');});});}
