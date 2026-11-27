@@ -460,10 +460,10 @@ document.querySelectorAll('[data-appt]').forEach(b=>b.addEventListener('click',e
 function submitAppt(e){
   e.preventDefault();
   const d=Object.fromEntries(new FormData(e.target).entries());
-  // In WordPress this posts to the site and emails sales@helixengineering.co.in.
+  // In WordPress this posts to the site and emails ashwin@helixengineering.co.in (client ask 27 Nov).
   // Static preview: hand off to the mail client so the flow is demonstrable.
   const body=`Name: ${d.name}%0ACompany: ${d.company||''}%0AEmail: ${d.email}%0APhone: ${d.phone||''}%0AProduct: ${d.product||''}%0AQuantity: ${d.qty||''}%0A%0A${(d.message||'').replace(/\n/g,'%0A')}`;
-  window.location.href=`mailto:sales@helixengineering.co.in?subject=Quote request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;
+  window.location.href=`mailto:ashwin@helixengineering.co.in?subject=Quote request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;
   return false;
 }
 // ---------- Living aurora shader gradient (WebGL) ----------

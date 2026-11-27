@@ -372,7 +372,7 @@ function observeReveals(){if(!_revObs){document.querySelectorAll('.reveal').forE
 observeReveals();
 function submitAppt(e){e.preventDefault();const d=Object.fromEntries(new FormData(e.target).entries());
  const body=`Name: ${d.name}%0ACompany: ${d.company||''}%0AEmail: ${d.email}%0APhone: ${d.phone||''}%0AProduct: ${d.product||''}%0AQuantity: ${d.qty||''}%0A%0A${(d.message||'').replace(/\n/g,'%0A')}`;
- window.location.href=`mailto:sales@helixengineering.co.in?subject=Quote request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;return false;}
+ window.location.href=`mailto:ashwin@helixengineering.co.in?subject=Quote request — ${encodeURIComponent(d.product||'Helix')}&body=${body}`;return false;}
 </script>
 <script>
 (function(){const cv=document.getElementById('bg-shader');const gl=cv.getContext('webgl')||cv.getContext('experimental-webgl');if(!gl){cv.style.display='none';return;}
