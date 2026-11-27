@@ -367,6 +367,9 @@ function render(){
   <h1>${esc(v.name)}</h1></section>
   <div class="d2 reveal">
     <div class="gal glass">${img}</div>
+    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div></div>
+  </div>
+  <div class="d2 reveal" style="margin-top:22px">
     <div class="panel glass">
       <p class="intro">${esc(first_intro(v))}</p>
       <div class="lbl" style="margin-top:24px;color:var(--faint)">Compound</div>
@@ -378,9 +381,6 @@ function render(){
       ${META.ds[comp]?'':`<button class="btn btn-ghost glass lbl" data-appt data-product="${esc(v.name)} — datasheet request">Request datasheet</button>`}</div>
       <p class="note">Not sure which compound? Tell us the medium, the temperature range and the pressure and we will specify it. A material suggestion is not engineering approval until the application is confirmed.</p>
     </div>
-  </div>
-  <div class="d2 reveal" style="margin-top:22px">
-    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div></div>
     <div style="display:flex;flex-direction:column;gap:22px">
       <div class="panel glass"><h3 class="lbl crumb">Specification</h3><div style="margin-top:14px">${
         specRows.map(([k,val])=>`<div class="sp"><span class="k">${k}</span><span>${esc(val)}</span></div>`).join('')}</div></div>
