@@ -367,7 +367,7 @@ function render(){
   <h1>${esc(v.name)}</h1></section>
   <div class="d2 reveal">
     <div class="gal glass">${img}</div>
-    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div></div>
+    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div><div class="dhl-badge"><img src="dhl-logo.png" alt="DHL"><div><b>Free delivery</b><span>Door-delivered by DHL to your premises, anywhere in the world</span></div></div></div>
   </div>
   <div class="d2 reveal" style="margin-top:22px">
     <div class="panel glass">
@@ -375,7 +375,6 @@ function render(){
       <div class="lbl" style="margin-top:24px;color:var(--faint)">Compound</div>
       <div class="chips">${compChips||'<span class=chip>To specification</span>'}</div>
       <div class="specgrid" id="pq">${specFields}</div>
-      <div class="dhl-badge"><img src="dhl-logo.png" alt="DHL"><div><b>Free delivery</b><span>Door-delivered by DHL to your premises, anywhere in the world</span></div></div>
       <div id="ds">${dsBadge(comp)}</div>
       <div class="actions"><button class="btn btn-solid lbl" data-appt data-product="${esc(v.name)}">Request a Quote</button>
       ${META.ds[comp]?'':`<button class="btn btn-ghost glass lbl" data-appt data-product="${esc(v.name)} — datasheet request">Request datasheet</button>`}</div>
