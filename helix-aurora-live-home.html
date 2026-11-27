@@ -227,6 +227,30 @@
   .dhl-band.reveal.in .logo{clip-path:inset(0 0 0 0);}
   @media(prefers-reduced-motion:reduce){.dhl-band.reveal .logo{clip-path:none!important;transition:none!important;}}
   @media(max-width:860px){.dhl-band{grid-template-columns:1fr;gap:18px;padding:26px 24px;text-align:left}.dhl-band .logo{height:40px}.dhl-band ul{flex-direction:row;flex-wrap:wrap}}
+  /* Material data sheets (27 Nov): branded like the DHL band/badge, in the site's cyan */
+  .ds-sec{padding-top:0!important;padding-bottom:30px!important;}
+  .ds-band{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:34px;padding:30px 38px;border-color:rgba(122,223,245,.30);background:linear-gradient(160deg,rgba(122,223,245,.10),rgba(255,255,255,.04) 55%,rgba(255,255,255,.02));}
+  .ds-band .ds-ico{width:58px;height:58px;color:var(--cyan);display:block;clip-path:inset(0 0 0 0);}
+  .ds-band .lbl{color:var(--cyan);font-size:10px;letter-spacing:.18em;}
+  .ds-band h3{margin:8px 0 6px;font-size:clamp(22px,2.4vw,32px);font-weight:400;letter-spacing:-.03em;line-height:1.1;color:#fff;}
+  .ds-band h3 b{font-weight:600;}
+  .ds-band p{margin:0;font-size:15px;line-height:1.55;color:#D9D1EE;max-width:560px;}
+  .ds-band ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,auto);gap:8px;}
+  .ds-band li a{display:block;font-size:12px;letter-spacing:.04em;padding:6px 14px;border-radius:999px;border:1px solid rgba(122,223,245,.32);color:#BFEFFA;white-space:nowrap;text-decoration:none;transition:background-color .16s ease-out,border-color .16s ease-out;}
+  .ds-band li a::after{content:" ↓";opacity:.7;}
+  @media(hover:hover){.ds-band li a:hover{background:rgba(122,223,245,.12);border-color:rgba(122,223,245,.6);}}
+  .ds-band.reveal .ds-ico{clip-path:inset(100% 0 0 0);transition:clip-path .7s cubic-bezier(.23,1,.32,1) .25s;}
+  .ds-band.reveal.in .ds-ico{clip-path:inset(0 0 0 0);}
+  @media(prefers-reduced-motion:reduce){.ds-band.reveal .ds-ico{clip-path:none!important;transition:none!important;}}
+  @media(max-width:860px){.ds-band{grid-template-columns:1fr;gap:18px;padding:26px 24px;}.ds-band .ds-ico{width:40px;height:40px}.ds-band ul{display:flex;flex-wrap:wrap}}
+  .ds-badge{display:flex;align-items:center;gap:14px;margin-top:12px;padding:12px 14px;border-radius:16px;background:rgba(122,223,245,.07);border:1px solid rgba(122,223,245,.35);text-decoration:none;color:inherit;transition:background-color .16s ease-out,border-color .16s ease-out;}
+  .ds-badge .ds-ico{width:30px;height:30px;color:var(--cyan);flex:none;}
+  .ds-badge b{display:block;font-size:15px;font-weight:600;color:var(--cyan);letter-spacing:-.01em;}
+  .ds-badge span{display:block;font-size:12.5px;color:#D9D1EE;margin-top:2px;}
+  .ds-badge .dl{margin-left:auto;flex:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:7px 12px;border-radius:999px;border:1px solid rgba(122,223,245,.4);}
+  .ds-badge:active{transform:scale(.99);}
+  @media(hover:hover){.ds-badge:hover{background:rgba(122,223,245,.13);border-color:rgba(122,223,245,.6);}}
+  @media(max-width:640px){.ds-badge{gap:12px}.ds-badge .ds-ico{width:22px;height:22px}.ds-badge .dl{padding:6px 10px}}
 
   textarea.qty,.field textarea.qty{display:block;width:100%;box-sizing:border-box;min-height:0;resize:none;overflow:hidden;line-height:1.4;font-family:inherit;}
   @media (max-width:640px){textarea.qty,.field textarea.qty{height:calc(2.8em + 26px);}}
@@ -278,6 +302,7 @@
   </div>
 </section>
 <section class="blk dhl-sec"><div class="dhl-band glass reveal"><img class="logo" src="dhl-logo.png" alt="DHL"><div><div class="lbl">Delivery</div><h3>Free delivery, <b>door to door.</b></h3><p>Every order is door-delivered by DHL to your premises, anywhere in the world.</p></div><ul><li>Door-delivered</li><li>To your premises</li><li>Worldwide</li></ul></div></section>
+<section class="blk ds-sec"><div class="ds-band glass reveal"><svg class="ds-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 5h17l9 9v29H12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 5v9h9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 23h14M18 29h14M18 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><div><div class="lbl">Material data sheets</div><h3>Every rubber, <b>on record.</b></h3><p>Download the material data sheet for each elastomer we mould: tensile strength, hardness, compression set, heat and chemical resistance.</p></div><ul><li><a href="datasheets/helix-nitrile-nbr-data-sheet.pdf" target="_blank" rel="noopener">Nitrile</a></li><li><a href="datasheets/helix-viton-fkm-data-sheet.pdf" target="_blank" rel="noopener">Viton</a></li><li><a href="datasheets/helix-epdm-data-sheet.pdf" target="_blank" rel="noopener">EPDM</a></li><li><a href="datasheets/helix-neoprene-cr-data-sheet.pdf" target="_blank" rel="noopener">Neoprene</a></li><li><a href="datasheets/helix-hnbr-data-sheet.pdf" target="_blank" rel="noopener">HNBR</a></li><li><a href="datasheets/helix-fluorosilicone-fvmq-data-sheet.pdf" target="_blank" rel="noopener">Fluorosilicone</a></li><li><a href="datasheets/helix-aflas-fepm-data-sheet.pdf" target="_blank" rel="noopener">AFLAS</a></li><li><a href="datasheets/helix-ffkm-data-sheet.pdf" target="_blank" rel="noopener">FFKM</a></li></ul></div></section>
 
 <!-- Three categories -->
 <section class="blk" id="categories">
