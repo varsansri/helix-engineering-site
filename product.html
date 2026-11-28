@@ -61,6 +61,13 @@
   .ds-file span{display:block;font-size:13px;color:#D9D1EE;margin-top:3px;}
   .ds-file .dl{margin-left:auto;flex:none;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);padding:8px 13px;border-radius:999px;border:1px solid rgba(122,223,245,.45);margin-top:0;}
   .ds-file:active{transform:scale(.99);}
+  .ds-multi{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;}
+  .ds-multi a{display:flex;height:100%;box-sizing:border-box;align-items:center;gap:10px;padding:11px 14px;border-radius:14px;background:rgba(122,223,245,.08);border:1px solid rgba(122,223,245,.38);color:#fff;text-decoration:none;font-size:15px;font-weight:500;line-height:1.25;transition:background-color .16s ease-out,border-color .16s ease-out;}
+  .ds-multi a::after{content:"↓";margin-left:auto;color:var(--cyan);}
+  .ds-multi .ds-ico{width:22px;height:22px;color:var(--cyan);flex:none;}
+  .ds-multi a:active{transform:scale(.99);}
+  @media(hover:hover){.ds-multi a:hover{background:rgba(122,223,245,.15);border-color:rgba(122,223,245,.65);}}
+  @media(max-width:640px){.ds-multi{grid-template-columns:1fr}}
   @media(hover:hover){.ds-file:hover{background:rgba(122,223,245,.15);border-color:rgba(122,223,245,.65);}}
   @media(max-width:640px){.ds-file{flex-wrap:wrap;gap:12px}.ds-file .ds-ico{width:26px;height:26px}.ds-file>div{flex:1 1 calc(100% - 40px);min-width:0}.ds-file .dl{margin-left:0;flex:1 0 100%;text-align:center}}
   @media(max-width:640px){.ds-badge{gap:12px}.ds-badge .ds-ico{width:22px;height:22px}.ds-badge .dl{padding:6px 10px}}
@@ -377,7 +384,7 @@ function render(){
   <h1>${esc(v.name)}</h1></section>
   <div class="d2 reveal">
     <div class="gal glass">${img}</div>
-    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div><div id="ds2">${dsDesc(comp)}</div><div class="dhl-badge"><img src="dhl-logo.png" alt="DHL"><div><b>Free delivery</b><span>Door-delivered by DHL to your premises, anywhere in the world</span></div></div></div>
+    <div class="panel glass desc"><h3 class="lbl crumb">Full description</h3><div class="desc-body">${v.body}</div><div id="ds2">${dsDesc(comp,v,f)}</div><div class="dhl-badge"><img src="dhl-logo.png" alt="DHL"><div><b>Free delivery</b><span>Door-delivered by DHL to your premises, anywhere in the world</span></div></div></div>
   </div>
   <div class="d2 reveal" style="margin-top:22px">
     <div class="panel glass">
@@ -399,9 +406,17 @@ function render(){
   ${document.getElementById('ft')?'':''}`;
   bindAppt();observeReveals();window.scrollTo(0,0);
 }
-function dsDesc(c){const d=META.ds[c];if(!d)return '';const n=(META.dsname[c]||c)+' Rubber Specifications';return `<div class="ds-desc"><div class="ds-tag">Material Data Sheet</div><a class="ds-file" href="${d.f}" target="_blank" rel="noopener"><svg class="ds-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 5h17l9 9v29H12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 5v9h9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 23h14M18 29h14M18 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><div><b>${esc(n)}</b><span>PDF, ${d.p} page${d.p>1?'s':''} · tensile, hardness, heat and chemical resistance</span></div><span class="dl">Download PDF</span></a></div>`;}
+const DS_WORDS={natural:'NR',nbr:'NBR',nitrile:'NBR',epdm:'EPDM',viton:'FKM',fkm:'FKM',silicone:'VMQ',fluorosilicone:'FVMQ',neoprene:'CR',hnbr:'HNBR',aflas:'FEPM',ffkm:'FFKM'};
+const DS_ALL=Object.keys(META.dsname).filter(c=>META.ds[c]);
+function dsList(v,f){const m=(v.body||'').match(/Compound<\/[^>]+>\s*<[^>]+>([^<]*)/);let cs=[];
+ if(m)m[1].split('/').forEach(w=>{const c=DS_WORDS[w.trim().toLowerCase()];if(c&&!cs.includes(c))cs.push(c);});
+ if(!cs.length)cs=[...new Set(f.variants.map(x=>x.compound).filter(Boolean))];
+ if(!cs.length)cs=DS_ALL;
+ return DS_ALL.filter(c=>cs.includes(c));}
+function dsDesc(c,v,f){if(!c&&v){const l=dsList(v,f);if(!l.length)return '';return `<div class="ds-desc"><div class="ds-tag">Material Data Sheet</div><ul class="ds-multi">${l.map(k=>`<li><a href="${META.ds[k].f}" target="_blank" rel="noopener"><svg class="ds-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 5h17l9 9v29H12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 5v9h9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 23h14M18 29h14M18 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>${esc(META.dsname[k])} Rubber Specifications</span></a></li>`).join('')}</ul></div>`;}
+ const d=META.ds[c];if(!d)return '';const n=(META.dsname[c]||c)+' Rubber Specifications';return `<div class="ds-desc"><div class="ds-tag">Material Data Sheet</div><a class="ds-file" href="${d.f}" target="_blank" rel="noopener"><svg class="ds-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 5h17l9 9v29H12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 5v9h9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 23h14M18 29h14M18 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><div><b>${esc(n)}</b><span>PDF, ${d.p} page${d.p>1?'s':''} · tensile, hardness, heat and chemical resistance</span></div><span class="dl">Download PDF</span></a></div>`;}
 function dsBadge(c){const d=META.ds[c];if(!d)return '';return `<a class="ds-badge" href="${d.f}" target="_blank" rel="noopener"><svg class="ds-ico" viewBox="0 0 48 48" fill="none" aria-hidden="true"><path d="M12 5h17l9 9v29H12z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M29 5v9h9" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M18 23h14M18 29h14M18 35h9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><div><b>Material Data Sheet</b><span>${esc(META.cname[c]||c)} · tested properties · PDF, ${d.p} page${d.p>1?'s':''}</span></div><span class="dl">Download</span></a>`;}
-document.addEventListener('click',e=>{if(!e.target.closest('.chip.pick'))return;setTimeout(()=>{const box=document.getElementById('ds');if(!box)return;const on=document.querySelector('.chip.pick.on');const h=find(location.hash.replace(/^#/,''))||{v:CAT[0].variants[0]};const cc=on?on.dataset.c:h.v.compound;box.innerHTML=dsBadge(cc);const b2=document.getElementById('ds2');if(b2)b2.innerHTML=dsDesc(cc);},0);});
+document.addEventListener('click',e=>{if(!e.target.closest('.chip.pick'))return;setTimeout(()=>{const box=document.getElementById('ds');if(!box)return;const on=document.querySelector('.chip.pick.on');const h=find(location.hash.replace(/^#/,''))||{v:CAT[0].variants[0]};const cc=on?on.dataset.c:h.v.compound;box.innerHTML=dsBadge(cc);const b2=document.getElementById('ds2');if(b2)b2.innerHTML=dsDesc(cc,h.v,h.f||CAT.find(x=>x.variants.includes(h.v)));},0);});
 function first_intro(v){const b=v.body||'';const L=(b.match(/<p class="lead">([\s\S]*?)<\/p>/)||[0,b])[1];const strip=x=>x.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ').trim();let t=strip(L);if(/:$/.test(t)){const o=b.match(/<ul class="opts">([\s\S]*?)<\/ul>/);t=o?t+' '+[...o[1].matchAll(/<li>([\s\S]*?)<\/li>/g)].slice(0,2).map(x=>strip(x[1])).join('; ')+'.':t.replace(/[^.]*:$/,'').trim();}const m=t.split(/(?<=[.!])\s/);return (m.slice(0,2).join(' ')).slice(0,240);}
 addEventListener('hashchange',render);render();
 </script>
